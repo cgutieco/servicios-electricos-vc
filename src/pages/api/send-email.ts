@@ -2,21 +2,14 @@ import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 import { contactFormSchema } from '../../lib/schemas';
 import { sanitizeText, escapeHtml } from '../../lib/sanitize';
+import { env } from 'cloudflare:workers';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     // 1. Get environment variables
-    const runtime = (locals as any).runtime;
-    if (!runtime || !runtime.env) {
-      return new Response(
-        JSON.stringify({ error: 'Runtime environment is not available.' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    const { RESEND_API_KEY, TURNSTILE_SECRET_KEY } = runtime.env;
+    const { RESEND_API_KEY, TURNSTILE_SECRET_KEY } = env as any;
 
     if (!RESEND_API_KEY) {
       return new Response(
@@ -103,8 +96,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const resend = new Resend(RESEND_API_KEY);
 
     // Configurable sender and recipient
-    const sender = runtime.env.SENDER_EMAIL || 'contacto@cgutieco.com';
-    const recipient = runtime.env.RECIPIENT_EMAIL || 'contacto@cgutieco.com';
+    const sender = (env as any).SENDER_EMAIL || 'contacto@cgutieco.com';
+    const recipient = (env as any).RECIPIENT_EMAIL || 'contacto@cgutieco.com';
 
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: `Formulario Contacto <${sender}>`,

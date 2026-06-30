@@ -38,19 +38,19 @@ const SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x000000000000000
       
       <form class="js-contact-form flex flex-col gap-sm">
         <div>
-          <Label for="hero-name">Nombre</Label>
-          <Input id="hero-name" name="name" placeholder="Tu nombre" type="text" required />
+          <Label for="hero-name">Nombre (Opcional)</Label>
+          <Input id="hero-name" name="name" placeholder="Tu nombre" type="text" />
         </div>
         <div>
-          <Label for="hero-condominio">Condominio</Label>
-          <Input id="hero-condominio" name="condominio" placeholder="Nombre de tu condominio" type="text" required />
+          <Label for="hero-condominio">Condominio (Opcional)</Label>
+          <Input id="hero-condominio" name="condominio" placeholder="Nombre de tu condominio" type="text" />
         </div>
         <div>
-          <Label for="hero-phone">Teléfono</Label>
+          <Label for="hero-phone">Teléfono (Obligatorio)</Label>
           <Input id="hero-phone" name="phone" placeholder="Tu número" type="tel" required />
         </div>
         <div>
-          <Label for="hero-service">Servicio Requerido</Label>
+          <Label for="hero-service">Servicio Requerido (Obligatorio)</Label>
           <Textarea id="hero-service" name="service" placeholder="Describe el servicio que necesitas..." required />
         </div>
 
@@ -62,7 +62,7 @@ const SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x000000000000000
         <!-- Response feedback container -->
         <div class="js-contact-feedback hidden p-xs rounded font-body-md text-center my-xs transition-all duration-200"></div>
 
-        <Button class="w-full mt-xs" type="submit">
+        <Button class="w-full mt-xs" type="submit" disabled>
           Enviar Solicitud
         </Button>
       </form>

@@ -7,6 +7,10 @@ export function initContactForms() {
 
     if (!feedback || !submitBtn) return;
 
+    form.addEventListener('input', () => {
+      submitBtn.disabled = !form.checkValidity();
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 

@@ -1,5 +1,4 @@
 ---
-import {Image} from 'astro:assets';
 import iconFooter from '../assets/icons/servicios-electricos-vc-icon-footer.svg';
 import FooterLink from './FooterLink.astro';
 
@@ -31,7 +30,7 @@ const socialLinks = [
             <!-- Columna 1: Marca -->
             <div class="flex flex-col">
                 <div class="flex items-center gap-3 mb-3">
-                    <Image src={iconFooter} alt="Servicios Eléctricos VC"/>
+                    <img src={iconFooter.src} width={iconFooter.width} height={iconFooter.height} alt="Servicios Eléctricos VC"/>
                     <span class="font-h3 text-[18px] font-bold text-white tracking-[0.02em]">SERVICIOS ELÉCTRICOS VC</span>
                 </div>
                 <p class="font-body-md text-[14px] leading-[1.6] text-[#8fa3b8] mb-xs max-w-70">

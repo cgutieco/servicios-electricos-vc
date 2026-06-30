@@ -15,19 +15,19 @@ const SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x000000000000000
     </Heading>
     <form class="js-contact-form flex flex-col gap-sm">
       <div>
-        <Label for="contact-name">Nombre</Label>
-        <Input id="contact-name" name="name" placeholder="Tu nombre" type="text" required />
+        <Label for="contact-name">Nombre (Opcional)</Label>
+        <Input id="contact-name" name="name" placeholder="Tu nombre" type="text" />
       </div>
       <div>
-        <Label for="contact-condominio">Condominio</Label>
-        <Input id="contact-condominio" name="condominio" placeholder="Nombre de tu condominio" type="text" required />
+        <Label for="contact-condominio">Condominio (Opcional)</Label>
+        <Input id="contact-condominio" name="condominio" placeholder="Nombre de tu condominio" type="text" />
       </div>
       <div>
-        <Label for="contact-phone">Teléfono</Label>
+        <Label for="contact-phone">Teléfono (Obligatorio)</Label>
         <Input id="contact-phone" name="phone" placeholder="Tu número" type="tel" required />
       </div>
       <div>
-        <Label for="contact-service">Servicio Requerido</Label>
+        <Label for="contact-service">Servicio Requerido (Obligatorio)</Label>
         <Textarea id="contact-service" name="service" placeholder="Describe el servicio que necesitas..." required></Textarea>
       </div>
 
@@ -39,7 +39,7 @@ const SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x000000000000000
       <!-- Response feedback container -->
       <div class="js-contact-feedback hidden p-xs rounded font-body-md text-center my-xs transition-all duration-200"></div>
 
-      <Button class="w-full mt-xs" type="submit">
+      <Button class="w-full mt-xs" type="submit" disabled>
         Enviar Solicitud
       </Button>
     </form>

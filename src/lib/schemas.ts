@@ -2,13 +2,15 @@ import { z } from 'zod';
 
 export const contactFormSchema = z.object({
   name: z.string()
-    .min(2, { message: 'El nombre debe tener al menos 2 caracteres.' })
     .max(100, { message: 'El nombre no puede exceder los 100 caracteres.' })
-    .trim(),
+    .trim()
+    .optional()
+    .or(z.literal('')),
   condominio: z.string()
-    .min(2, { message: 'El nombre del condominio debe tener al menos 2 caracteres.' })
     .max(100, { message: 'El condominio no puede exceder los 100 caracteres.' })
-    .trim(),
+    .trim()
+    .optional()
+    .or(z.literal('')),
   phone: z.string()
     .min(8, { message: 'El teléfono debe tener al menos 8 dígitos.' })
     .max(20, { message: 'El teléfono no puede exceder los 20 caracteres.' })

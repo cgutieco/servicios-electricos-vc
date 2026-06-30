@@ -11,7 +11,7 @@ interface Props extends Omit<ButtonProps, keyof AnchorProps>, AnchorProps {
 
 const { variant = 'primary', href, class: className, ...rest } = Astro.props;
 
-const baseStyles = "cursor-pointer font-button text-button rounded-lg active:scale-95 transition-all duration-200 flex items-center justify-center";
+const baseStyles = "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100 font-button text-button rounded-lg active:scale-95 transition-all duration-200 flex items-center justify-center";
 
 const variants = {
   primary: "bg-industrial-orange text-white py-sm px-md",
