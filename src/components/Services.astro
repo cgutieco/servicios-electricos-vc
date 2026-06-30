@@ -1,8 +1,9 @@
 ---
 import ServiceCard from './ServiceCard.astro';
-import imgElectrobombas from '../assets/service-electrobombas.jpg';
-import imgTableros from '../assets/service-tableros.jpg';
-import imgCisternas from '../assets/service-cisternas.jpg';
+import imgElectrobombas from '../assets/images/slider-services/mantenimiento-electrobombas.webp';
+import imgTableros from '../assets/images/slider-services/mantenimiento-tablero-electrico.webp';
+import imgCisternas from '../assets/images/slider-services/limpieza-cisternas.webp';
+import imgCamaras from '../assets/images/slider-services/instalacion-camaras-videovigilancia.webp';
 import Heading from './ui/Heading.astro';
 
 const services = [
@@ -22,9 +23,9 @@ const services = [
         imageAlt: "Saneamiento de cisternas"
     },
     {
-        title: "Mantenimiento Preventivo Integral",
-        imageSrc: "https://picsum.photos/600/400?random=1",
-        imageAlt: "Mantenimiento Industrial"
+        title: "Instalación y mantenimiento de cámaras de seguridad",
+        imageSrc: imgCamaras,
+        imageAlt: "Instalación de cámaras de seguridad"
     }
 ];
 ---
