@@ -4,6 +4,8 @@ import Button from './ui/Button.astro';
 import Input from './ui/Input.astro';
 import Textarea from './ui/Textarea.astro';
 import Label from './ui/Label.astro';
+
+const SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 ---
 <section class="bg-cloud-gray py-lg md:py-xl">
   <div class="responsive-container">
@@ -34,23 +36,32 @@ import Label from './ui/Label.astro';
         Solicita una evaluación
       </Heading>
       
-      <form class="flex flex-col gap-sm">
+      <form class="js-contact-form flex flex-col gap-sm">
         <div>
           <Label for="hero-name">Nombre</Label>
-          <Input id="hero-name" placeholder="Tu nombre" type="text" required />
+          <Input id="hero-name" name="name" placeholder="Tu nombre" type="text" required />
         </div>
         <div>
           <Label for="hero-condominio">Condominio</Label>
-          <Input id="hero-condominio" placeholder="Nombre de tu condominio" type="text" required />
+          <Input id="hero-condominio" name="condominio" placeholder="Nombre de tu condominio" type="text" required />
         </div>
         <div>
           <Label for="hero-phone">Teléfono</Label>
-          <Input id="hero-phone" placeholder="Tu número" type="tel" required />
+          <Input id="hero-phone" name="phone" placeholder="Tu número" type="tel" required />
         </div>
         <div>
           <Label for="hero-service">Servicio Requerido</Label>
-          <Textarea id="hero-service" placeholder="Describe el servicio que necesitas..." required />
+          <Textarea id="hero-service" name="service" placeholder="Describe el servicio que necesitas..." required />
         </div>
+
+        <!-- Turnstile CAPTCHA Widget -->
+        <div class="flex justify-center my-xs">
+          <div class="cf-turnstile animate-fade-in" data-sitekey={SITE_KEY} data-theme="light"></div>
+        </div>
+
+        <!-- Response feedback container -->
+        <div class="js-contact-feedback hidden p-xs rounded font-body-md text-center my-xs transition-all duration-200"></div>
+
         <Button class="w-full mt-xs" type="submit">
           Enviar Solicitud
         </Button>
