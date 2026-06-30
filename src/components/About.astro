@@ -1,10 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import victorCamposImg from '../assets/victor-campos.jpg';
+
+const cvDownloadUrl = "https://descargas.cgutieco.com/cv-victor-campos.pdf";
 ---
 <section class="bg-cloud-gray py-lg md:py-xl">
   <div class="responsive-container flex flex-col md:flex-row gap-md items-center">
-    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
+    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary shrink-0">
       <Image src={victorCamposImg} alt="Víctor Campos, especialista electromecánico" class="w-full h-full object-cover" />
     </div>
     <div>
@@ -14,7 +16,7 @@ import victorCamposImg from '../assets/victor-campos.jpg';
       <p class="font-body-md text-body-md text-on-surface-variant mb-md">
         Bajo la dirección de Víctor Campos, especialista con vasta trayectoria en megaproyectos (Antamina, Cerro Verde, Camisea), garantizamos procesos rigurosos, diagnósticos precisos y soluciones definitivas.
       </p>
-      <a class="inline-flex items-center justify-center gap-xs text-primary border border-primary font-button text-button py-xs px-sm rounded hover:bg-surface-container-low transition-colors w-full md:w-auto" download href="#">
+      <a class="inline-flex items-center justify-center gap-xs text-primary border border-primary font-button text-button py-xs px-sm rounded hover:bg-surface-container-low transition-colors w-full md:w-auto" href={cvDownloadUrl} target="_blank" rel="noopener noreferrer">
         <span class="material-symbols-outlined">description</span>
         Descargar CV de Víctor Campos
       </a>
