@@ -1,10 +1,10 @@
-export function stripHtml(val: string): string {
+export function stripHtml(val: string | undefined): string {
   if (!val) return '';
   // Remove HTML tags using regex
   return val.replace(/<\/?[^>]+(>|$)/g, '');
 }
 
-export function escapeHtml(val: string): string {
+export function escapeHtml(val: string | undefined): string {
   if (!val) return '';
   return val
     .replace(/&/g, '&amp;')
@@ -15,6 +15,7 @@ export function escapeHtml(val: string): string {
     .replace(/\//g, '&#x2F;');
 }
 
-export function sanitizeText(val: string): string {
+export function sanitizeText(val: string | undefined): string {
+  if (!val) return '';
   return stripHtml(val).trim();
 }

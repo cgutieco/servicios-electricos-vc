@@ -9,7 +9,8 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
   try {
     // 1. Get environment variables
-    const { RESEND_API_KEY, TURNSTILE_SECRET_KEY } = env as any;
+    const RESEND_API_KEY = ((env as any).RESEND_API_KEY || import.meta.env.RESEND_API_KEY) as string;
+    const TURNSTILE_SECRET_KEY = ((env as any).TURNSTILE_SECRET_KEY || import.meta.env.TURNSTILE_SECRET_KEY) as string;
 
     if (!RESEND_API_KEY) {
       return new Response(
@@ -96,8 +97,8 @@ export const POST: APIRoute = async ({ request }) => {
     const resend = new Resend(RESEND_API_KEY);
 
     // Configurable sender and recipient
-    const sender = (env as any).SENDER_EMAIL || 'contacto@cgutieco.com';
-    const recipient = (env as any).RECIPIENT_EMAIL || 'contacto@cgutieco.com';
+    const sender = (env as any).SENDER_EMAIL || import.meta.env.SENDER_EMAIL || 'contacto@cgutieco.com';
+    const recipient = (env as any).RECIPIENT_EMAIL || import.meta.env.RECIPIENT_EMAIL || 'contacto@cgutieco.com';
 
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: `Formulario Contacto <${sender}>`,
