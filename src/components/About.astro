@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import victorCamposImg from '../assets/victor-campos.webp';
 
 const cvDownloadUrl = "https://descargas.cgutieco.com/cv-victor-campos.pdf";
@@ -7,7 +7,15 @@ const cvDownloadUrl = "https://descargas.cgutieco.com/cv-victor-campos.pdf";
 <section class="bg-cloud-gray py-lg md:py-xl">
   <div class="responsive-container flex flex-col md:flex-row gap-md items-center">
     <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary shrink-0">
-      <Image src={victorCamposImg} alt="Víctor Campos, especialista electromecánico" class="w-full h-full object-cover" />
+      <Picture 
+        src={victorCamposImg} 
+        alt="Víctor Campos, especialista electromecánico" 
+        widths={[128, 192, 256, 384]}
+        sizes="(max-width: 767px) 128px, 192px"
+        formats={['avif', 'webp']}
+        fallbackFormat="webp"
+        class="w-full h-full object-cover" 
+      />
     </div>
     <div>
       <h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-dark-navy mb-sm">
