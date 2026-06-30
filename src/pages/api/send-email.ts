@@ -132,7 +132,7 @@ export const POST: APIRoute = async ({ request }) => {
             <p style="margin: 0; color: #222; white-space: pre-wrap; line-height: 1.5;">${escService}</p>
           </div>
           <footer style="margin-top: 25px; font-size: 12px; color: #888; text-align: center; border-top: 1px solid #eaeaea; padding-top: 10px;">
-            Este correo fue enviado automáticamente desde el formulario de contacto de reparaciones-electricas-vc.cgutieco.com.
+            Este correo fue enviado automáticamente desde el formulario de contacto de servicios-electricos-vc.cgutieco.com.
           </footer>
         </div>
       `,
