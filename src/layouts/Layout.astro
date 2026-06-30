@@ -1,5 +1,39 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string | URL;
+}
+
+const { 
+  title, 
+  description, 
+  image = '/servicios-electricos-vc-icon-32x32.svg',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site)
+} = Astro.props;
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Servicios Eléctricos VC",
+  "image": new URL(image, Astro.site).toString(),
+  "url": "https://servicios-electricos-vc.cgutieco.com/",
+  "telephone": "+51987178258",
+  "email": "victorcampos38@hotmail.com",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Lima"
+    },
+    {
+      "@type": "City",
+      "name": "Callao"
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -9,7 +43,32 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/servicios-electricos-vc-icon-32x32.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>SERVICIOS ELECTRICOS VC</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
+
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
   <body class="bg-surface font-body-md text-on-surface antialiased pt-15">
