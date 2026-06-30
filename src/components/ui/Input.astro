@@ -1,0 +1,24 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+
+interface Props extends HTMLAttributes<'input'> {
+  id?: string;
+  'aria-label'?: string;
+  placeholder?: string;
+}
+
+const {class: className, id, 'aria-label': ariaLabel, placeholder, ...rest} = Astro.props;
+const inputId = id || `input-${Math.random().toString(36).slice(2, 11)}`;
+const label = ariaLabel || placeholder || 'Input field';
+---
+
+<input
+        id={inputId}
+        aria-label={label}
+        placeholder={placeholder}
+        class:list={[
+            "w-full bg-white border border-outline-variant rounded p-xs font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors",
+            className
+        ]}
+        {...rest}
+/>

@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import victorCamposImg from '../assets/victor-campos.jpg';
+---
+<section class="bg-cloud-gray py-lg md:py-xl">
+  <div class="responsive-container flex flex-col md:flex-row gap-md items-center">
+    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
+      <Image src={victorCamposImg} alt="Víctor Campos, especialista electromecánico" class="w-full h-full object-cover" />
+    </div>
+    <div>
+      <h2 class="font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-dark-navy mb-sm">
+        Experiencia Minera e Industrial en su Condominio
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-md">
+        Bajo la dirección de Víctor Campos, especialista con vasta trayectoria en megaproyectos (Antamina, Cerro Verde, Camisea), garantizamos procesos rigurosos, diagnósticos precisos y soluciones definitivas.
+      </p>
+      <a class="inline-flex items-center justify-center gap-xs text-primary border border-primary font-button text-button py-xs px-sm rounded hover:bg-surface-container-low transition-colors w-full md:w-auto" download href="#">
+        <span class="material-symbols-outlined">description</span>
+        Descargar CV de Víctor Campos
+      </a>
+    </div>
+  </div>
+</section>

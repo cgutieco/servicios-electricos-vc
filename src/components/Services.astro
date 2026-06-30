@@ -1,0 +1,73 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import imgElectrobombas from '../assets/service-electrobombas.jpg';
+import imgTableros from '../assets/service-tableros.jpg';
+import imgCisternas from '../assets/service-cisternas.jpg';
+import Heading from './ui/Heading.astro';
+
+const services = [
+    {
+        title: "Mantenimiento de Electrobombas de agua y sumidero",
+        imageSrc: imgElectrobombas,
+        imageAlt: "Mantenimiento de Electrobombas"
+    },
+    {
+        title: "Tableros Eléctricos de control y fuerza",
+        imageSrc: imgTableros,
+        imageAlt: "Tableros Eléctricos"
+    },
+    {
+        title: "Saneamiento y limpieza de cisternas",
+        imageSrc: imgCisternas,
+        imageAlt: "Saneamiento de cisternas"
+    },
+    {
+        title: "Mantenimiento Preventivo Integral",
+        imageSrc: "https://picsum.photos/600/400?random=1",
+        imageAlt: "Mantenimiento Industrial"
+    }
+];
+---
+<section class="bg-white py-lg md:py-xl">
+    <div class="responsive-container">
+        <Heading level={2} class="mb-md">
+            Nuestras Especialidades
+        </Heading>
+        <div class="slider-section__track">
+            {services.map((service) => (
+                <ServiceCard
+                    title={service.title}
+                    imageSrc={service.imageSrc}
+                    imageAlt={service.imageAlt}
+                />
+            ))}
+        </div>
+        <div class="slider-buttons">
+            <button id="slider-prev"
+                    class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors active:scale-95"
+                    aria-label="Anterior">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button id="slider-next"
+                    class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors active:scale-95"
+                    aria-label="Siguiente">
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    const track = document.querySelector('.slider-section__track') as HTMLElement | null;
+    const btnPrev = document.getElementById('slider-prev') as HTMLButtonElement | null;
+    const btnNext = document.getElementById('slider-next') as HTMLButtonElement | null;
+
+    if (track && btnPrev && btnNext) {
+        btnPrev.addEventListener('click', (): void => {
+            track.scrollBy({left: -317, behavior: 'smooth'}); // 298px card + 19px gap
+        });
+        btnNext.addEventListener('click', (): void => {
+            track.scrollBy({left: 317, behavior: 'smooth'});
+        });
+    }
+</script>

@@ -1,0 +1,37 @@
+---
+import Heading from './ui/Heading.astro';
+import Button from './ui/Button.astro';
+import Input from './ui/Input.astro';
+import Textarea from './ui/Textarea.astro';
+import Label from './ui/Label.astro';
+---
+<section class="bg-white py-lg md:py-xl border-b border-outline-variant">
+  <div class="responsive-container">
+    <div class="max-w-128 mx-auto">
+    <Heading level={2} class="mb-md text-center">
+      Solicita una evaluación para tu condominio
+    </Heading>
+    <form class="flex flex-col gap-sm">
+      <div>
+        <Label for="contact-name">Nombre</Label>
+        <Input id="contact-name" placeholder="Tu nombre" type="text" />
+      </div>
+      <div>
+        <Label for="contact-condominio">Condominio</Label>
+        <Input id="contact-condominio" placeholder="Nombre de tu condominio" type="text" />
+      </div>
+      <div>
+        <Label for="contact-phone">Teléfono</Label>
+        <Input id="contact-phone" placeholder="Tu número" type="tel" />
+      </div>
+      <div>
+        <Label for="contact-service">Servicio Requerido</Label>
+        <Textarea id="contact-service" placeholder="Describe el servicio que necesitas..."></Textarea>
+      </div>
+      <Button class="w-full mt-xs" type="submit">
+        Enviar Solicitud
+      </Button>
+    </form>
+  </div>
+  </div>
+</section>

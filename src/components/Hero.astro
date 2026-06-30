@@ -1,0 +1,140 @@
+---
+import Heading from './ui/Heading.astro';
+import Button from './ui/Button.astro';
+import Input from './ui/Input.astro';
+import Textarea from './ui/Textarea.astro';
+import Label from './ui/Label.astro';
+---
+<section class="bg-cloud-gray py-lg md:py-xl">
+  <div class="responsive-container">
+    <Heading level={1} class="mb-sm">
+      Mantenimiento Electromecánico Confiable para Condominios
+    </Heading>
+    <p class="font-body-lg text-body-lg text-on-surface-variant mb-md">
+      Estándares de calidad industrial aplicados a la tranquilidad y continuidad de tu edificio.
+    </p>
+    <Button id="quoteBtn" type="button" class="w-full md:w-auto mb-sm">
+      Solicitar Cotización
+    </Button>
+    <p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs mt-xs">
+      <span class="material-symbols-outlined text-industrial-orange">verified</span>
+      <span><strong>Garantía comprobada:</strong> 4 años de servicio continuo en el Complejo Habitacional Alcázar.</span>
+    </p>
+  </div>
+
+  <dialog id="quoteModal">
+    <div class="relative p-md w-full box-border">
+      <Button id="closeModalBtn" type="button" variant="close" aria-label="Cerrar modal">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </Button>
+      
+      <Heading level={2} class="mb-md text-center pr-md">
+        Solicita una evaluación
+      </Heading>
+      
+      <form class="flex flex-col gap-sm">
+        <div>
+          <Label for="hero-name">Nombre</Label>
+          <Input id="hero-name" placeholder="Tu nombre" type="text" required />
+        </div>
+        <div>
+          <Label for="hero-condominio">Condominio</Label>
+          <Input id="hero-condominio" placeholder="Nombre de tu condominio" type="text" required />
+        </div>
+        <div>
+          <Label for="hero-phone">Teléfono</Label>
+          <Input id="hero-phone" placeholder="Tu número" type="tel" required />
+        </div>
+        <div>
+          <Label for="hero-service">Servicio Requerido</Label>
+          <Textarea id="hero-service" placeholder="Describe el servicio que necesitas..." required />
+        </div>
+        <Button class="w-full mt-xs" type="submit">
+          Enviar Solicitud
+        </Button>
+      </form>
+
+      <div class="flex items-center gap-sm my-sm">
+        <div class="h-px bg-outline-variant flex-1"></div>
+        <span class="font-label-md text-label-md text-on-surface-variant">o también</span>
+        <div class="h-px bg-outline-variant flex-1"></div>
+      </div>
+
+      <Button href="https://wa.me/591XXXXXXXX?text=Hola,%20quisiera%20solicitar%20una%20evaluación%20para%20mi%20condominio." target="_blank" rel="noopener noreferrer" variant="whatsapp" class="w-full gap-xs">
+        <svg fill="white" height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path>
+        </svg>
+        Contactar por WhatsApp
+      </Button>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  const quoteBtn = document.getElementById('quoteBtn') as HTMLButtonElement | null;
+  const quoteModal = document.getElementById('quoteModal') as HTMLDialogElement | null;
+  const closeModalBtn = document.getElementById('closeModalBtn') as HTMLButtonElement | null;
+
+  // Abrir modal
+  if (quoteBtn && quoteModal) {
+    quoteBtn.addEventListener('click', (): void => {
+      quoteModal.showModal();
+      document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+    });
+  }
+
+  // Cerrar modal con el botón X
+  if (closeModalBtn && quoteModal) {
+    closeModalBtn.addEventListener('click', (): void => {
+      quoteModal.close();
+      document.body.style.overflow = '';
+    });
+  }
+
+  // Cerrar modal al hacer clic en el backdrop (fuera del dialog)
+  if (quoteModal) {
+    quoteModal.addEventListener('click', (e: MouseEvent): void => {
+      const dialogDimensions = quoteModal.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        quoteModal.close();
+        document.body.style.overflow = '';
+      }
+    });
+  }
+</script>
+
+<style is:global>
+  dialog#quoteModal {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: 90% !important;
+    max-width: 500px !important;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background: white;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-sizing: border-box;
+  }
+
+  dialog#quoteModal[open] {
+    display: block;
+  }
+
+  dialog#quoteModal::backdrop {
+    background-color: rgba(10, 25, 47, 0.6) !important;
+    backdrop-filter: blur(4px);
+  }
+</style>

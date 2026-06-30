@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'h1'> {
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+const { level, class: className, ...rest } = Astro.props;
+
+const Tag = `h${level}` as any;
+
+const levelStyles = {
+  1: "font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-dark-navy",
+  2: "font-h2-mobile text-h2-mobile md:font-h2 md:text-h2 text-dark-navy",
+  3: "font-h3 text-h3 text-dark-navy",
+  4: "font-body-lg text-body-lg text-dark-navy font-semibold",
+  5: "font-body-md text-body-md text-dark-navy font-semibold",
+  6: "font-label-md text-label-md text-dark-navy font-semibold"
+};
+
+const combinedClass = [
+  levelStyles[level],
+  className
+].filter(Boolean).join(' ');
+---
+
+<Tag class={combinedClass} {...rest}>
+  <slot />
+</Tag>

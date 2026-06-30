@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Heading from './ui/Heading.astro';
+
+interface Props {
+  title: string;
+  imageSrc: string | ImageMetadata;
+  imageAlt: string;
+}
+
+const { title, imageSrc, imageAlt } = Astro.props;
+const isRemote = typeof imageSrc === 'string';
+---
+
+<div class="bg-white rounded-lg border border-outline-variant shadow-sm flex flex-col">
+  {
+    isRemote ? (
+      <img src={imageSrc as string} alt={imageAlt} class="w-full h-48 object-cover" />
+    ) : (
+      <Image src={imageSrc as ImageMetadata} alt={imageAlt} class="w-full h-48 object-cover" />
+    )
+  }
+  <div class="p-sm bg-cloud-gray grow">
+    <Heading level={3} class="mb-xs">{title}</Heading>
+  </div>
+</div>

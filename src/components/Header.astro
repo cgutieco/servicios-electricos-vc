@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import iconMobile from '../assets/icons/servicios-electricos-vc-icon-40x40.svg';
+import iconDesktop from '../assets/icons/servicios-electricos-vc-icon-56x56.svg';
+---
+<header class="bg-surface fixed top-0 left-0 right-0 z-50 border-b border-outline-variant h-16 md:h-22 py-2">
+  <div class="responsive-container flex justify-between items-center h-full">
+    <div class="flex flex-col items-center">
+      <Image src={iconMobile} alt="Servicios Eléctricos VC" class="md:hidden" />
+      <Image src={iconDesktop} alt="Servicios Eléctricos VC" class="hidden md:block" />
+      <span class="font-h3 text-[10px] md:text-[12px] font-bold text-primary">SERVICIOS ELECTRICOS VC</span>
+    </div>
+  </div>
+</header>
