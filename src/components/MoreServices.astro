@@ -1,0 +1,93 @@
+---
+import Heading from './ui/Heading.astro';
+
+const services = [
+  { name: 'Inspección y Diagnóstico de Salas Eléctricas', icon: 'search_check' },
+  { name: 'Automatización y Control con PLC', icon: 'memory' },
+  { name: 'Tableros de Transferencia y Contra Incendios', icon: 'local_fire_department' },
+  { name: 'Gasfitería e Instalaciones Hidráulicas', icon: 'plumbing' },
+  { name: 'Pruebas Hidrostáticas y de Aislamiento', icon: 'science' },
+  { name: 'Terminaciones y Redes de Media Tensión', icon: 'cable' },
+  { name: 'Ductos de Extracción de Aire', icon: 'air' },
+  { name: 'Estaciones de Bombeo de Presión Constante', icon: 'water_pump' },
+];
+---
+
+<section class="more-services bg-cloud-gray py-lg md:py-xl">
+  <div class="responsive-container">
+    <Heading level={2} class="mb-xs">
+      También Realizamos
+    </Heading>
+    <p class="font-body-lg text-body-lg text-on-surface-variant mb-md max-w-prose">
+      Además de nuestras especialidades principales, ofrecemos soluciones integrales para toda la infraestructura electromecánica e hidráulica de su condominio.
+    </p>
+    <div class="more-services__grid">
+      {services.map((service) => (
+        <div class="more-services__card">
+          <span class="material-symbols-outlined more-services__icon" aria-hidden="true">
+            {service.icon}
+          </span>
+          <Heading level={4} class="more-services__name">
+            {service.name}
+          </Heading>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .more-services__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  @media (min-width: 600px) {
+    .more-services__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .more-services__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-gutter);
+    }
+  }
+
+  .more-services__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+    background: white;
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+    user-select: none;
+  }
+
+  .more-services__card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 12px rgb(65 122 161 / 0.10);
+  }
+
+  .more-services__icon {
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    transition: color 0.2s ease;
+  }
+
+  .more-services__card:hover .more-services__icon {
+    color: var(--color-industrial-orange);
+  }
+
+  .more-services__name {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+</style>
